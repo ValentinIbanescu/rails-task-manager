@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "destroying tasks"
+Task.destroy_all
+puts "creating tasks"
+50.times do
+  Task.create(
+    title: Faker::Hobby.activity,
+    details: Faker::ChuckNorris.fact,
+    completed: false
+  )
+end
+puts "#{Task.count} tasks were created successfully."
